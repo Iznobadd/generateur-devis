@@ -55,9 +55,9 @@ export default function PDFView(props: any) {
                 >
                   DEVIS
                 </Text>
-                <Text>Numéro : 123</Text>
+                <Text>Numéro : {props.numero}</Text>
                 <Text>Date : {getCurrentDate("/")}</Text>
-                <Text>Due Date : 24.05.2025</Text>
+                <Text>Due Date : {props.rendu}</Text>
               </View>
 
               <View style={styles.tab}>
@@ -91,8 +91,7 @@ export default function PDFView(props: any) {
               <View style={styles.footer}>
                 <View style={styles.w_70}>
                   <Text style={styles.orange_color}>METHODE DE RÉGLEMENT</Text>
-                  <Text>Account Name: Brandon CEBI</Text>
-                  <Text>Account No : 123-456-7890</Text>
+                  <Text>{props.reglement}</Text>
                 </View>
                 <View style={styles.w_30}>
                   <View style={styles.recap}>
