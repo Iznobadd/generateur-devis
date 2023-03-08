@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
 } from "@react-pdf/renderer";
+import getCurrentDate from "./GetCurrentDate";
 import { styles } from "./PDFStyles";
 const PDFGenerator = () => {
   return (
@@ -53,7 +54,7 @@ const PDFGenerator = () => {
                 DEVIS
               </Text>
               <Text>Numéro : 123</Text>
-              <Text>Date : 02.05.2025</Text>
+              <Text>Date : {getCurrentDate("/")}</Text>
               <Text>Due Date : 24.05.2025</Text>
             </View>
 
