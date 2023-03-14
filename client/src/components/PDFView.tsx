@@ -7,9 +7,11 @@ import {
   Image,
   StyleSheet,
 } from "@react-pdf/renderer";
+import { useState } from "react";
 import getCurrentDate from "./GetCurrentDate";
 import { styles } from "./PDFStyles";
 export default function PDFView(props: any) {
+  let subtotal = 0;
   return (
     <PDFViewer height={"100%"} width={"100%"}>
       <Document>
@@ -68,24 +70,23 @@ export default function PDFView(props: any) {
                   <Text style={styles.tab_header_text}>PRICE</Text>
                   <Text style={styles.tab_header_text}>TOTAL</Text>
                 </View>
-                <View style={styles.tab_content}>
-                  <Text style={styles.tab_header_text}>1</Text>
-                  <Text style={styles.tab_header_text}>
-                    Ajout d'une feature
-                  </Text>
-                  <Text style={styles.tab_header_text}>2</Text>
-                  <Text style={styles.tab_header_text}>500</Text>
-                  <Text style={styles.tab_header_text}>1000</Text>
-                </View>
-                <View style={styles.tab_content}>
-                  <Text style={styles.tab_header_text}>2</Text>
-                  <Text style={styles.tab_header_text}>
-                    Ajout d'une seconde feature
-                  </Text>
-                  <Text style={styles.tab_header_text}>3</Text>
-                  <Text style={styles.tab_header_text}>400</Text>
-                  <Text style={styles.tab_header_text}>1200</Text>
-                </View>
+                {props.feature.map((feature: any, index: number) => {
+                  return (
+                    <View style={styles.tab_content} key={index + 1}>
+                      <Text style={styles.tab_header_text}>{index + 1}</Text>
+                      <Text style={styles.tab_header_text}>
+                        {feature.description}
+                      </Text>
+                      <Text style={styles.tab_header_text}>{feature.qty}</Text>
+                      <Text style={styles.tab_header_text}>
+                        {feature.price}
+                      </Text>
+                      <Text style={styles.tab_header_text}>
+                        {feature.price * feature.qty}
+                      </Text>
+                    </View>
+                  );
+                })}
               </View>
 
               <View style={styles.footer}>
@@ -96,11 +97,13 @@ export default function PDFView(props: any) {
                 <View style={styles.w_30}>
                   <View style={styles.recap}>
                     <Text style={styles.w_50}>Subtotal</Text>
-                    <Text style={styles.w_50}>$250</Text>
+                    <Text style={styles.w_50}>{props.subtotal} €</Text>
                     <Text style={styles.w_50}>Tax (20%)</Text>
-                    <Text style={styles.w_50}>$15</Text>
+                    <Text style={styles.w_50}>{props.taxe} €</Text>
                     <Text style={styles.orange_bg_text}>Total</Text>
-                    <Text style={styles.orange_bg_text}>$265</Text>
+                    <Text style={styles.orange_bg_text}>
+                      {props.subtotal + props.taxe} €
+                    </Text>
                   </View>
                 </View>
               </View>
