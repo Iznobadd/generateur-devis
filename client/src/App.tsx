@@ -1,16 +1,14 @@
-import React from "react";
 import "./App.css";
-import ReactPDF, { PDFViewer } from "@react-pdf/renderer";
-import FormDevis from "./components/FormDevis";
 import { Route, Routes } from "react-router-dom";
+import Home from "./screens/Home";
+import Devis from "./screens/Devis";
 
 function App() {
   return (
-    <div className="test">
-      <Routes>
-        <Route path="/" element={<FormDevis />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/devis" element={<Devis />} />
+    </Routes>
   );
 }
 

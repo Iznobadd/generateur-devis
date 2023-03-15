@@ -1,4 +1,15 @@
-.test {
-  height: 100vh;
-  width: 100vw;
+@font-face {
+  font-family: "Lato";
+  src: url(fonts/Lato/Lato-Regular.ttf);
+}
+@font-face {
+  font-family: "Lato";
+  src: url(fonts/Lato/Lato-Bold.ttf);
+  font-weight: bold;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Lato";
 }
